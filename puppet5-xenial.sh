@@ -31,7 +31,7 @@ puppet config set server $MASTER --section main || exit 1
 
 puppet config set environment $PUPPETENV --section main || exit 1
 
-puppet agent -t || exit 1
+puppet agent -t
 
 echo 'Go sign this node and press enter when done...'
 read dummy
@@ -40,7 +40,7 @@ read dummy
 puppet agent --enable
 
 # Run it for reals
-puppet agent -t || exit 1
+puppet agent -t
 
 # Enable the service
-puppet resource service puppet ensure=running enable=true || exit 1
+puppet resource service puppet ensure=running enable=true
