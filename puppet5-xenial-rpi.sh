@@ -9,16 +9,16 @@ read PUPPETENV
 mkdir setup-temp
 cd setup-temp
 
-sudo apt-get update
-sudo apt-get install ruby-full facter hiera bundler
+apt-get update || exit 1
+apt-get install ruby-full facter hiera bundler unzip -y || exit 1
 
-wget https://github.com/puppetlabs/puppet/archive/5.4.0.zip
-unzip 5.4.0.zip
+wget https://github.com/puppetlabs/puppet/archive/5.4.0.zip || exit 1
+unzip 5.4.0.zip || exit 1
 cd puppet-5.4.0
 
-bundle install --path .bundle/gems
-sudo bundle update
-ruby install.rb
+bundle install --path .bundle/gems || exit 1
+bundle update || exit 1
+ruby install.rb || exit 1
 
 # Add puppet path for future sessions
 
